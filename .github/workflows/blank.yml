@@ -1,8 +1,8 @@
 name: update data
 
+
 on:
   schedule:
-    # Jalan tiap 2 jam (job maks 6 jam; sleep 350m ≈ 5j50m biar aman margin)
     - cron: '0 */2 * * *'
   workflow_dispatch:
   push:
@@ -36,7 +36,8 @@ jobs:
           done
           echo "OK!"
           date "+%Y-%m-%d %H:%M:%S" > last_update.txt
-
+          # Commit + push CUKUP last_update.txt saja (bukan data repo lain).
+          # [skip ci] biar push ini tidak memicu workflow lagi (anti loop).
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add last_update.txt
